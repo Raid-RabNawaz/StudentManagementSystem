@@ -1,0 +1,63 @@
+﻿@model IEnumerable<StudentManagementSystem.Web.Models.Entities.Course>
+
+@{
+    ViewBag.Title = "Courses";
+}
+<head>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" />
+</head>
+<h2>Courses</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table" id="courseTable" >
+    <thead>
+        <tr>
+            <th>Course Code</th>
+            <th>Course Name</th>
+            <th>Teacher Name</th>
+            <th>Start Date</th>
+            <th>End Date</th> 
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var course in Model)
+        {
+            <tr>
+                <td>@course.CourseCode</td>
+                <td>@course.CourseName</td>
+                <td>@course.TeacherName</td>
+                <td>@course.StartDate.ToShortDateString()</td>
+                <td>@course.EndDate.ToShortDateString()</td> 
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = course.CourseId }) 
+                    @Html.ActionLink("Details", "Details", new { id = course.CourseId })
+                    @Html.ActionLink("Delete", "Delete", new { id = course.CourseId })
+                </td>
+            </tr>
+        }
+    </tbody>
+
+    
+
+</table>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script>
+    var $j = jQuery.noConflict();
+    $j(document).ready(function () {
+        $j('#courseTable').DataTable({
+            "paging": true,
+            "searching": true,
+            "ordering": true,
+            "info": true
+        });
+    });
+</script>
+

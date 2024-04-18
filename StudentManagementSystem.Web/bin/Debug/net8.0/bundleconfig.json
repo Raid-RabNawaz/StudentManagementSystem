@@ -1,0 +1,7 @@
+{
+  "outputFileName": "wwwroot/js/site.min.js",
+  "inputFiles": [
+    "node_modules/jquery/dist/jquery.min.js",
+    "wwwroot/js/*.js"
+  ]
+}
